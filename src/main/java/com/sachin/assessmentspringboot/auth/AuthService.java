@@ -4,11 +4,15 @@ import com.sachin.assessmentspringboot.dto.UserDTO;
 import com.sachin.assessmentspringboot.entity.User;
 import com.sachin.assessmentspringboot.entity.enums.UserType;
 import com.sachin.assessmentspringboot.exception.DuplicateException;
+import com.sachin.assessmentspringboot.exception.InValidCredentials;
+import com.sachin.assessmentspringboot.exception.NotFoundException;
 import com.sachin.assessmentspringboot.repo.UserRepo;
 import com.sachin.assessmentspringboot.util.mapper.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,14 +50,16 @@ public class AuthService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        authenticationManager.authenticate(
+        User user = userRepo.findUserByEmail(request.getEmail())
+                .orElseThrow(() -> new NotFoundException("No such user exists"));
+        Authentication authenticate = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
                         request.getPassword()
                 )
         );
-        User user = userRepo.findUserByEmail(request.getEmail())
-                .orElseThrow();
+
+        System.out.println("Authentication successful");
         Map<String, Object> claims = new HashMap<>();
         claims.put("userType", user.getUserType());
 
