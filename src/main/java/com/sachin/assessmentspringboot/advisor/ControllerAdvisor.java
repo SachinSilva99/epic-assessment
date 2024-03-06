@@ -1,7 +1,6 @@
 package com.sachin.assessmentspringboot.advisor;
 
 import com.sachin.assessmentspringboot.exception.DuplicateException;
-import com.sachin.assessmentspringboot.exception.InValidCredentials;
 import com.sachin.assessmentspringboot.exception.NotFoundException;
 import com.sachin.assessmentspringboot.util.StandardResponse;
 import org.springframework.http.HttpStatus;
