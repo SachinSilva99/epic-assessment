@@ -1,9 +1,10 @@
-package com.sachin.assessmentspringboot.service;
+package com.sachin.assessmentspringboot.service.impl;
 
 import com.sachin.assessmentspringboot.dto.MovieDTO;
 import com.sachin.assessmentspringboot.entity.Movie;
 import com.sachin.assessmentspringboot.exception.NotFoundException;
 import com.sachin.assessmentspringboot.repo.MovieRepo;
+import com.sachin.assessmentspringboot.service.MovieService;
 import com.sachin.assessmentspringboot.util.mapper.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class MovieServiceImpl implements MovieService{
+public class MovieServiceImpl implements MovieService {
     private final MovieRepo movieRepo;
     private final Mapper mapper;
 

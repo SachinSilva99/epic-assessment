@@ -1,10 +1,11 @@
 server.port=9000
 spring.jpa.hibernate.ddl-auto=update
-spring.datasource.url=jdbc:mysql://mysql-container:3306/assessmentspringboot?createDatabaseIfNotExist=true
-spring.datasource.username=root
-spring.datasource.password=1234
+spring.datasource.url=jdbc:mysql://mysql-310dbef2-manathungastharuka-2377.a.aivencloud.com:12924/defaultdb?sslmode=require
+spring.datasource.username=avnadmin
+spring.datasource.password=AVNS_LEhct_8lLF_7Tn4ms94
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+
 security.jwt.secret-key=404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
 security.jwt.expiration=86400000
